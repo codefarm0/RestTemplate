@@ -4,3 +4,6 @@
  
  ## Exchange() method of Rest Template - calling Http GET endpoint of external REST service
  Explained in video with details - https://youtu.be/5WXk88r9T90
+ 
+ ## Exchange() method of Rest Template - calling Http POST/PUT/DELETE endpoint of external REST service
+ Youtube video for explanation - https://youtu.be/RHplGVRKwlc
