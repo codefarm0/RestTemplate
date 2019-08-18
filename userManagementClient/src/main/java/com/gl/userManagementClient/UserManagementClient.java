@@ -1,9 +1,9 @@
 package com.gl.userManagementClient;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,11 +18,17 @@ public class UserManagementClient {
     static String baseUrl = "http://localhost:8083/springDataDemo/";
 
 
+    @Autowired
+    private static ForEntityMethodOfRestTemplateDemo forEntityMethodOfRestTemplateDemo;
+
     public static void main(String[] args) {
-
-        ///SpringApplication.run(UserManagementClient.class, args);
-
+        //SpringApplication.run(UserManagementClient.class, args);
         useExchangeMethodsOfRestTemplate();
+
+        ForEntityMethodOfRestTemplateDemo forEntityMethodOfRestTemplateDemo = new ForEntityMethodOfRestTemplateDemo();
+        forEntityMethodOfRestTemplateDemo.driverMethod();
+        ForObjectMethodOfRestTemplateDemo forObjectMethodOfRestTemplateDemo = new ForObjectMethodOfRestTemplateDemo();
+        forObjectMethodOfRestTemplateDemo.driverMethod();
     }
 
     private static void useExchangeMethodsOfRestTemplate() {
@@ -30,10 +36,10 @@ public class UserManagementClient {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<User> requestEntity = new HttpEntity<>(headers);
+        HttpEntity<Object> requestEntity = new HttpEntity<>(headers);
 
-        //getSingleUserByExchangeMethod(requestEntity);
-        //getListUserByExchangeMethod(requestEntity);
+        getSingleUserByExchangeMethod(requestEntity);
+        getListUserByExchangeMethod(requestEntity);
 
         User sysUser = new User();
         sysUser.setFirstName("Arvind");
@@ -46,7 +52,7 @@ public class UserManagementClient {
 
         //updateUserByExchangeMethod(requestEntity);
 
-        deleteUserByExchangeMethod(requestEntity);
+        //deleteUserByExchangeMethod(requestEntity);
     }
 
     private static void deleteUserByExchangeMethod(HttpEntity<User> requestEntity) {
@@ -108,6 +114,7 @@ public class UserManagementClient {
         User userBody = responseUser.getBody();
         System.out.println("user object - " + userBody);*/
     }
+
     private static void getSingleUserByExchangeMethod(HttpEntity<Object> requestEntity) {
         ResponseEntity<String> responseEntity = restTemplate.exchange(baseUrl + "user/5",
                 HttpMethod.GET,
