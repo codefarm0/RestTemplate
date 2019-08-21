@@ -12,11 +12,6 @@ public class MyRestTemplateCustomizer implements RestTemplateCustomizer {
     @Autowired
     private MyRequestInterceptor myRequestInterceptor;
 
-    /**
-     * Callback to customize a {@link RestTemplate} instance.
-     *
-     * @param restTemplate the template to customize
-     */
     @Override
     public void customize(RestTemplate restTemplate) {
         restTemplate.getInterceptors().add(myRequestInterceptor);

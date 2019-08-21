@@ -19,7 +19,7 @@ public class MainController {
 
     @GetMapping("/userList")
     List<User> getUserList(){
-        return restTemplate.getForObject("http://localhost:8083/springDataDemo/users",
+        return restTemplate.getForObject("/users",
                 List.class);
     }
 }
