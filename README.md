@@ -20,4 +20,4 @@
  Watch video - https://youtu.be/H00jO2y0kXM
  
  ## How to add interceptor in RestTemplate for centralized logging of request and response
- TBD
+ https://youtu.be/WaxS4EQO8WQ
